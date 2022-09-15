@@ -1,41 +1,62 @@
-# Tugas 2 PBP
+# Template Proyek Django PBP
 
 Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
 
-## Link Aplikasi Heroku (Katalog)
+*Read this in other languages: [Indonesian](README.md), [English](README.en.md)*
 
-https://ark-tugas2pbp.herokuapp.com/katalog/
+## Pendahuluan
 
-## Jawaban Pertanyaan
+Repositori ini merupakan sebuah template yang dirancang untuk membantu mahasiswa yang sedang mengambil mata kuliah Pemrograman Berbasis Platform (CSGE602022) mengetahui struktur sebuah proyek aplikasi Django serta file dan konfigurasi yang penting dalam berjalannya aplikasi. Kamu dapat dengan bebas menyalin isi dari repositori ini atau memanfaatkan repositori ini sebagai pembelajaran sekaligus awalan dalam membuat sebuah proyek Django.
 
-1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan
-   tersebut kaitan antara urls.py, views.py, models.py, dan berkas html;
+## Cara Menggunakan
 
-2. Jelaskan kenapa menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa
-   menggunakan virtual environment?
+Apabila kamu ingin menggunakan repositori ini sebagai repositori awalan yang nantinya akan kamu modifikasi:
 
-   Virtual environment digunakan dalam melakukan pemrograman agar bisa memisahkan implementasi suatu proyek dari sistem operasi yang dimiliki oleh local host yang dipakai oleh si pembuat program. Tujuannya adalah untuk membedakan versi software yang digunakan dalam mengembangkan suatu proyek. Misalkan, kita ingin membuat suatu aplikasi yang berbasis python 3.8, padahal sistem yang kita gunakan menggunakan python 3.10, maka daripada kita mengubah versi python yang ada pada sistem device yang dipakai akan lebih mudah jika kita membuat suatu virtual environment yang dikhususkan untuk proyek yang saat ini kita kerjakan sehingga kita lebih leluasa dalam menginstall software-software yang dibutuhkan untuk membuat suatu proyek pemrograman. Selain itu, virtual environment juga menghindari terjadinya kerusakan atau error pada sistem yang kita pakai ketika menjalankan testing suatu proyek. Walaupun begitu, sebenarnya kita tetap dapat bisa membuat aplikasi web berbasis Django tanpa menggunakan virtual environment, tetapi hal tersebut tidak dianjurkan karena alasan-alasan yang sudah disebutkan sebelumnya. Jadi, menggunakan virtual environment merupakan best practice dalam mengembangkan aplikasi web berbasis Django.
+1. Buka laman GitHub repositori templat kode, lalu klik tombol "**Use this template**"
+   untuk membuat salinan repositori ke dalam akun GitHub milikmu.
+2. Buka laman GitHub repositori yang dibuat dari templat, lalu gunakan perintah
+   `git clone` untuk menyalin repositorinya ke suatu lokasi di dalam sistem
+   berkas (_filesystem_) komputermu:
 
-3. Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas.
+   ```shell
+   git clone <URL ke repositori di GitHub> <path ke suatu lokasi di filesystem>
+   ```
+3. Masuk ke dalam repositori yang sudah di-_clone_ dan jalankan perintah berikut
+   untuk menyalakan _virtual environment_:
 
-   1. Membuat sebuah fungsi pada views.py yang dapat melakukan pengambilan data dari model dan dikembalikan ke dalam
-      sebuah HTML.
+   ```shell
+   python -m venv env
+   ```
+4. Nyalakan environment dengan perintah berikut:
 
-      Mendefinisikan suatu fungsi show_items() dengan parameter suatu request dan menyimpan dictionary response yang berisi list item yang ada di class CatalogItem, nama mahasiswa, dan NPM. Response tersebut kemudian ditampilkan di katalog.html
+   ```shell
+   # Windows
+   .\env\Scripts\activate
+   # Linux/Unix, e.g. Ubuntu, MacOS
+   source env/bin/activate
+   ```
+5. Install dependencies yang dibutuhkan untuk menjalankan aplikasi dengan perintah berikut:
 
-   2. Membuat sebuah routing untuk memetakan fungsi yang telah kamu buat pada views.py.
+   ```shell
+   pip install -r requirements.txt
+   ```
 
-      Menambahkan pattern url yang baru di urls.py, yaitu adalah path string kosong setelah /katalog (https://ark-tugas2pbp.herokuapp.com/katalog/) yang menunjuk ke fungsi show_items() di views.py
+6. Jalankan aplikasi Django menggunakan server pengembangan yang berjalan secara
+   lokal:
 
-   3. Memetakan data yang didapatkan ke dalam HTML dengan sintaks dari Django untuk pemetaan data template.
+   ```shell
+   python manage.py runserver
+   ```
+7. Bukalah `http://localhost:8000` pada browser favoritmu untuk melihat apakah aplikasi sudah berjalan dengan benar.
 
-      Melakukan iterasi tiap item pada CatalogItem dan mencetak atributnya sesuai urutan yang akan ditampilkan pada tabel, yaitu item_name, item_price, item_stock, ratings, description, dan item_url. Sintaks yang dipakai untuk menuliskan suatu variabel pada html adalah {{ var_name }}
+## Contoh Deployment 
 
-   4. Melakukan deployment ke Heroku terhadap aplikasi yang sudah kamu buat sehingga nantinya dapat diakses oleh
-      teman-temanmu melalui Internet.
+Pada template ini, deployment dilakukan dengan memanfaatkan GitHub Actions sebagai _runner_ dan Heroku sebagai platform Hosting aplikasi. 
 
-      Menambahkan secret pada setting repository di GitHub, yaitu app name Heroku yang akan di-deploy dan API key yang didapat dari account settings di Heroku. Setelah itu, melakukan proses add/stage, commit, dan push ke GitHub melalui source control di Visual Studio Code.
+Untuk melakukan deployment, kamu dapat melihat instruksi yang ada pada [Tutorial 0](https://pbp-fasilkom-ui.github.io/ganjil-2023/assignments/tutorial/tutorial-0).
+
+Untuk contoh aplikasi Django yang sudah di deploy, dapat kamu akses di [https://django-pbp-template.herokuapp.com/](https://django-pbp-template.herokuapp.com/)
 
 ## Credits
 
-TUGAS 2 PBP by ARK
+Template ini dibuat berdasarkan [PBP Ganjil 2021](https://gitlab.com/PBP-2021/pbp-lab) yang ditulis oleh Tim Pengajar Pemrograman Berbasis Platform 2021 ([@prakashdivyy](https://gitlab.com/prakashdivyy)) dan [django-template-heroku](https://github.com/laymonage/django-template-heroku) yang ditulis oleh [@laymonage, et al.](https://github.com/laymonage). Template ini dirancang sedemikian rupa sehingga mahasiswa dapat menjadikan template ini sebagai awalan serta acuan dalam mengerjakan tugas maupun dalam berkarya.
