@@ -2,7 +2,7 @@
 
 Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
 
-## Link Aplikasi Heroku (Katalog)
+## Link Aplikasi Heroku (MyWatchlist)
 
 https://ark-tugas2pbp.herokuapp.com/mywatchlist/
 
@@ -70,6 +70,17 @@ https://ark-tugas2pbp.herokuapp.com/mywatchlist/
     7. Melakukan deployment ke Heroku terhadap aplikasi yang sudah kamu buat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
 
     Melakukan push ke repository GitHub melalui source control di Visual Studio Code
+
+## Screenshot Akses URL Menggunakan Postman
+
+- https://ark-tugas2pbp.herokuapp.com/mywatchlist/html/
+![](mywatchlist_html.png)
+
+- https://ark-tugas2pbp.herokuapp.com/mywatchlist/xml/
+![](mywatchlist_xml.png)
+
+- https://ark-tugas2pbp.herokuapp.com/mywatchlist/json/
+![](mywatchlist_json.png)
 
 ## Credits
 
