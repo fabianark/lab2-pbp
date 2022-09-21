@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 1,
+        "fields": {
+            "watched": true,
+            "title": "1917",
+            "rating": 4.1,
+            "release_date": "2020-01-10",
+            "review": "It's a stunning watch from start to finish. The amount of work that went into this film alone deserves your attendance, and even then, the story never stalls, and has a fair balance between war and humanity, and has some of the most incredible camera work I've seen in a while. It's hands down my favorite film of 2019."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 2,
+        "fields": {
+            "watched": true,
+            "title": "Joker",
+            "rating": 4.2,
+            "release_date": "2019-10-04",
+            "review": "Truly a masterpiece, The Best Hollywood film of 2019, one of the Best films of the decade... And truly the Best film to bring a comic book so chillingly and realistically to real ife. Remarkable Direction, Cinematography, Music and the Acting. Some people are surprised to find it DISTURBING and VIOLENT, but it's a necessity and message. It's about society and reflects those underappreciated/unrecognized/bullied people, proving they can do something too. The way it shows class difference, corruption and how rich and talented rule others around them is not exaggerated and that's what makes it different. It's BELIEVABLE. There could be multiple JOKERs living in our society that could shake those around them in much bitter way than the film shows making people uncomforting people. Consider this a wake up call, a message, but first a film. A PERFECT film."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 3,
+        "fields": {
+            "watched": false,
+            "title": "Inception",
+            "rating": 4.4,
+            "release_date": "2010-06-16",
+            "review": "The 20th Century had Casablanca, Star Wars, the Godfather, Blade Runner, and others - this is the first of the 21st Century masterpieces. Truly in awe at how amazing this movie is, an astounding show of all aspects of films. Amazing story and cinematography accompanied with actors worthy of telling the tale. Remarkable and breathtaking."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 4,
+        "fields": {
+            "watched": true,
+            "title": "Forrest Gump",
+            "rating": 4.4,
+            "release_date": "1994-06-06",
+            "review": "I have seen this movie easily a half a dozen times, and I find that the beauty of the film is how Forrest Gump not only shares his innocence and purity with others, including the audience, he also manages to retain that innocence and purity through some very difficult times. As a Viet Nam veteran, and a college graduate of the late Sixties, I could of course personally relate to the various periods that Forrest Gump endures. I would only mention that the skillful and seamless blending of music, action, and period costume was enthralling. And yet it was so perfectly understated that Forrest Gump's travels through thirty five years of the stormiest and most meaningful years of American history only became clearly defined for the viewer. Even more so than the well known chocolates quote as a metaphor for life, I felt that the remark that stupid is what you do is probably more workable for most of us."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 5,
+        "fields": {
+            "watched": false,
+            "title": "Schindler's List",
+            "rating": 4.5,
+            "release_date": "1994-02-04",
+            "review": "Schindler's List is undoubtedly the best Holocaust film ever made. There just isn't anything like this film. Various other films have tried to show the true horrors of the Holocaust, but none of them succeeded the way that Schindler's List did. Schindler's List is a difficult film to watch. When you see the true atrocities of the Holocaust, your jaw drops. When you see the pain that all of the innocent people were going through, the only thing you can do is cry. The true goal of all Holocaust films is to make you feel sorrowful, and Schindler's List did that to me. If you want to see the best depiction of the Holocaust, make your way towards Schindler's List. Me n my kids cried during the pit scene."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 6,
+        "fields": {
+            "watched": false,
+            "title": "Doctor Sleep",
+            "rating": 3.7,
+            "release_date": "2019-10-08",
+            "review": "If you are going into this film expecting it to be a straight up sequel to the Kubrick film with the same horror tone, you'll be disappointed, however if you have an open mind, this movie is very well directed and acted and the story is very compelling. This is more of a fantasy thriller than a horror film and I really like that about this film. It also does quite a bit of homage to the 1980 film, but takes it into a new and interesting direction with a deep underlying theme direct from Steven King."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 7,
+        "fields": {
+            "watched": true,
+            "title": "Midsommar",
+            "rating": 3.6,
+            "release_date": "2019-07-03",
+            "review": "Let me first say, this is not a 'bad' movie. It utilizes creative camera work and cinematography to add to the narrative. But I personally still didn't like it. Its main goal in my opinion is to disturb the viewer as much as possible through the use of sound, gory visuals and the feeling of isolation and insanity. While I can see how this can speak to a certain audience, it didn't appeal to me and made me want to turn of the movie quite a few times. If you are into these kinds of films, definitely give this a try but if you, like me, enjoy being scared by a horror movie instead of weirded out and disturbed, this might not be for you."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 8,
+        "fields": {
+            "watched": true,
+            "title": "Parasite",
+            "rating": 4.3,
+            "release_date": "2019-10-08",
+            "review": "This is a well written and well perfomed original film. With a lot of repetitive cinema these day i felt this was something new. I felt connected and engaged with the character throughout the film. There are several well directed tense moments throughout the film. A popular topic of class struggled well portrayed. Its always nice to see foreign language films having worldwide success."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 9,
+        "fields": {
+            "watched": true,
+            "title": "The Lighthouse",
+            "rating": 3.7,
+            "release_date": "2019-10-01",
+            "review": "Really well made movie. Great acting and I was really transported to another place and time. Well crafted for sure.. but in the end I'm not quite sure what the point of it all was. But maybe that was what the director was going for. Seemed like chaos for chaos sake. A strong film for sure though..."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlistitem",
+        "pk": 10,
+        "fields": {
+            "watched": true,
+            "title": "Avatar",
+            "rating": 3.9,
+            "release_date": "2009-12-18",
+            "review": "James Cameron has big ideas and big visions. Thankfully, the latter he dives into with a lust for cinematic glory and (with more money than some countries have in an entire year) he has made his vision of a planet called Pandora in the year 21-something something of a real wonder. If only his big ideas weren't, for the most part, cribbed from other movies and stories and archetypes. I would be reminded of Joseph Campbell's myth-buster formula that so many have taken to heart in adventure movies, but Cameron's formula would appear to come second to his attention to visual detail. This has its pros and cons, some more or some less depending on what viewer sees/hears in it all."
+        }
+    }
+]

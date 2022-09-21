@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1 style="text-align: center; color: blue">MOVIE WATCHLIST</h1>
+  <table>
+    <tr>
+      <th>Watched</th>
+      <th style="width: 150px">Title</th>
+      <th>Rating</th>
+      <th style="width: 150px">Release Date</th>
+      <th>Review</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for item in watchlist %}
+        <tr>
+            <th>{{ item.watched }}</th>
+            <th>{{ item.title }}</th>
+            <th>{{ item.rating }}</th>
+            <th>{{ item.release_date|date:"j F Y" }}</th>
+            <th>{{ item.review }}</th>
+        </tr>
+        <tr>
+        </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <h3>Feedback:</h3>
+  <b>{{ text_response }}</b>
+
+ {% endblock content %}
