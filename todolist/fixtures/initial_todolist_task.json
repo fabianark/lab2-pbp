@@ -1,0 +1,62 @@
+[
+    {
+      "model": "todolist.task",
+      "pk": 1,
+      "fields": {
+        "user": 1,
+        "date": "2022-01-01",
+        "title": "Task 1 cbkadal",
+        "description": "Read Silberschatz ch.13"
+      }
+    },
+    {
+      "model": "todolist.task",
+      "pk": 2,
+      "fields": {
+        "user": 1,
+        "date": "2022-08-17",
+        "title": "Task 2 cbkadal",
+        "description": "Update mylog.txt"
+      }
+    },
+    {
+      "model": "todolist.task",
+      "pk": 3,
+      "fields": {
+        "user": 1,
+        "date": "2022-09-29",
+        "title": "Task 3 cbkadal",
+        "description": "Run myscript.sh"
+      }
+    },
+    {
+      "model": "todolist.task",
+      "pk": 4,
+      "fields": {
+        "user": 2,
+        "date": "2022-01-01",
+        "title": "Task 1 sofita",
+        "description": "Ask TA about Lab 3"
+      }
+    },
+    {
+      "model": "todolist.task",
+      "pk": 5,
+      "fields": {
+        "user": 2,
+        "date": "2022-08-17",
+        "title": "Task 2 sofita",
+        "description": "Help dek depe with his assignment"
+      }
+    },
+    {
+      "model": "todolist.task",
+      "pk": 6,
+      "fields": {
+        "user": 2,
+        "date": "2022-09-29",
+        "title": "Task 3 sofita",
+        "description": "Do TP 1"
+      }
+    }
+  ]

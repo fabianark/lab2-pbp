@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Create Task</title>
+{% endblock meta %}
+
+{% block content %}
+<h1 style="color: darkblue; text-align: center; font-weight: bold; font-family: Tahoma">Create Task</h1>
+
+<div class = "create-task">
+
+    <h1>Add your tasks here:</h1><br>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Task title: </td>
+                <td><input type="text" name="title" placeholder="Title" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Description: </td>
+                <td>
+                    <textarea name="description" placeholder="Task description" class="form-control"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input class="btn add_task" type="submit" value="Add task">
+                </td>
+            </tr>
+        </table>
+    </form>  
+    
+    {% if messages %}  
+        <ul>   
+            {% for message in messages %}  
+                <li>{{ message }}</li>  
+                {% endfor %}  
+        </ul>   
+    {% endif %}
+
+    <br>
+    View your to-do list here: <a href="{% url 'todolist:show_todolist' %}">To-Do List</a>
+
+</div>
+
+{% endblock content %}

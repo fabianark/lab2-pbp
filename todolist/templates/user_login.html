@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>User Login</title>
+{% endblock meta %}
+
+{% block content %}
+<h1 style="color: darkblue; text-align: center; font-weight: bold; font-family: Tahoma">User Login</h1>
+
+<div class = "login">
+
+    <h1>Login</h1><br>
+
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Password: </td>
+                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+            </tr>
+
+            <tr>
+            </tr>
+ 
+            <tr>
+                <td></td>
+                <td><input class="btn login_btn" type="submit" value="Login"></td>
+            </tr>
+        </table>
+    </form>
+
+    {% if messages %}
+        <br>
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+    
+    <br>
+    Don't have an account yet? <a href="{% url 'todolist:register_account' %}">Create Account</a>
+
+</div>
+
+{% endblock content %}

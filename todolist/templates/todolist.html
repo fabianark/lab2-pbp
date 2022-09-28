@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>To-Do List</title>
+{% endblock meta %}
+
+{% block content %}
+<h1 style="color: darkblue; text-align: center; font-weight: bold; font-family: Tahoma">To-Do List</h1>
+
+<div class = "todolist">
+
+    <h1 style="text-align: center">Hey, {{ username }}! Here's your to-do list:</h1><br>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Change Status</th>
+            <th>Delete Task</th>
+        </tr>
+        {% for task in todolist %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.date|date:"j F Y" }}</td>
+            {% if task.is_finished %}
+                <td>Finished</td>
+            {% else %}
+                <td>Not Finished</td>
+            {% endif %}
+            <td>
+                <form method="POST" action="{% url 'todolist:change_status' %}">
+                    {% csrf_token %}
+                    <input type="number" name="pk" value="{{ task.id }}" hidden>
+                    <input type="submit" value="Change">
+                </form>
+            </td>
+            <td>
+                <form method="POST" action="{% url 'todolist:delete_task' %}">
+                    {% csrf_token %}
+                    <input type="number" name="pk" value="{{ task.id }}" hidden>
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if messages %}
+        <br>
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}     
+    
+    <br>
+    Don't have an account yet? <a href="{% url 'todolist:register_account' %}">Create Account</a>
+
+</div>
+
+{% endblock content %}
