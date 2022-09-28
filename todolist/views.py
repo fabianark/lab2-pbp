@@ -57,7 +57,7 @@ def create_task(request):
         user = request.user
         title = request.POST.get('title')
         description = request.POST.get('description')
-        task = Task(user=user, date=date.today(), title=title, description=description, id='{:06d}'.format(randint(0, 999999)))
+        task = Task(user=user, date=date.today(), title=title, description=description)
         task.save()
 
         messages.success(request, 'A task has been added!')
@@ -68,7 +68,7 @@ def create_task(request):
 
 @login_required(login_url='/todolist/login/')
 def change_status(request):
-    task = Task.objects.get(id=request.POST.get('pk'))
+    task = Task.objects.get(pk=request.POST['pk'])
     task.is_finished = not task.is_finished
     task.save()
 
@@ -77,7 +77,7 @@ def change_status(request):
 
 @login_required(login_url='/todolist/login/')
 def delete_task(request):
-    task = Task.objects.get(id=request.POST.get('pk'))
+    task = Task.objects.get(pk=request.POST['pk'])
     task.delete()
 
     messages.success(request, 'A task has been deleted!')

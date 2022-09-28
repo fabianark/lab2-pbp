@@ -33,14 +33,14 @@
             <td>
                 <form method="POST" action="{% url 'todolist:change_status' %}">
                     {% csrf_token %}
-                    <input type="number" name="pk" value="{{ task.id }}" hidden>
+                    <input type="number" name="pk" value="{{ task.pk }}" hidden>
                     <input type="submit" value="Change">
                 </form>
             </td>
             <td>
                 <form method="POST" action="{% url 'todolist:delete_task' %}">
                     {% csrf_token %}
-                    <input type="number" name="pk" value="{{ task.id }}" hidden>
+                    <input type="number" name="pk" value="{{ task.pk }}" hidden>
                     <input type="submit" value="Delete">
                 </form>
             </td>

@@ -7,4 +7,3 @@ class Task(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     is_finished = models.BooleanField(default=False)
-    id = models.CharField(max_length=6, primary_key=True)

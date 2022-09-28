@@ -1,7 +1,7 @@
 [
     {
       "model": "todolist.task",
-      "id": 1,
+      "pk": 1,
       "fields": {
         "user": 1,
         "date": "2022-01-01",
@@ -11,7 +11,7 @@
     },
     {
       "model": "todolist.task",
-      "id": 2,
+      "pk": 2,
       "fields": {
         "user": 1,
         "date": "2022-08-17",
@@ -21,7 +21,7 @@
     },
     {
       "model": "todolist.task",
-      "id": 3,
+      "pk": 3,
       "fields": {
         "user": 1,
         "date": "2022-09-29",
@@ -31,7 +31,7 @@
     },
     {
       "model": "todolist.task",
-      "id": 4,
+      "pk": 4,
       "fields": {
         "user": 2,
         "date": "2022-01-01",
@@ -41,7 +41,7 @@
     },
     {
       "model": "todolist.task",
-      "id": 5,
+      "pk": 5,
       "fields": {
         "user": 2,
         "date": "2022-08-17",
@@ -51,7 +51,7 @@
     },
     {
       "model": "todolist.task",
-      "id": 6,
+      "pk": 6,
       "fields": {
         "user": 2,
         "date": "2022-09-29",
