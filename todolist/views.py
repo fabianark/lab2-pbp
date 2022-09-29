@@ -1,5 +1,6 @@
 from datetime import date
 from random import randint
+from urllib import response
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -7,6 +8,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from todolist.models import Task
 from django.contrib.auth.decorators import login_required
+import datetime
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 
@@ -30,7 +34,9 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('todolist:show_todolist')
+            response = HttpResponseRedirect(reverse('todolist:show_todolist'))
+            response.set_cookie('last_login', str(datetime.datetime.now()))
+            return response
         else:
             messages.info(request, 'Wrong username or password!')
 

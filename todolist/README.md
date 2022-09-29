@@ -43,20 +43,20 @@ https://ark-tugas2pbp.herokuapp.com/todolist/
     4. Mengimplementasikan form registrasi, login, dan logout agar pengguna dapat menggunakan todolist dengan baik.
 
     - Form registrasi dibuat dengan cara membuat fungsi register_account() menggunakan template form UserCreationForm(), lalu data input dikirim ke server dengan method HTTP request POST dan terakhir data disimpan ke database dengan method save() pada model Task. Kemudian setelah selesai, fungsi akan redirect ke halaman login.
-    - Implementasi login dibuat dengan cara membuat fungsi user_login(), lalu data input dikirim ke server dengan method HTTP request POST. Data username dan password diambil dengan "request.POST.get()". Setelah itu, akan dilakukan authentication user dengan mengecek apakah username dan password ada di database. Jika ada, maka fungsi "login(request, user)" akan dipanggil. Terakhir, fungsi akan redirect ke halaman utama todolist.
+    - Implementasi login dibuat dengan cara membuat fungsi user_login(), lalu data input dikirim ke server dengan method HTTP request POST. Data username dan password diambil dengan "request.POST.get()". Setelah itu, akan dilakukan authentication user dengan mengecek apakah username dan password ada di database. Jika ada, maka fungsi "login(request, user)" akan dipanggil. Fungsi juga akan mengecek session terakhir dengan implementasi cookies. Terakhir, fungsi akan redirect ke halaman utama todolist.
     -Implementasi logout dibuat dengan cara membuat fungsi user_logout() yang akan memanggil fungsi "logout(request)", lalu redirect ke halaman login.
 
     5. Membuat halaman utama todolist yang memuat username pengguna, tombol Tambah Task Baru, tombol logout, serta tabel berisi tanggal pembuatan task, judul task, dan deskripsi task.
 
-    
+    Membuat fungsi show_todolist() yang akan mengambil username milik user yang sedang menggunakan aplikasi. Kemudian context yang dikirim ke halaman HTML adalah username dan daftar task yang dimiliki pengguna (menggunakan method filter()). Langkah berikutnya adalah render halaman HTML "todolist.html". Username pengguna ditampilkan dengan memasukkan "{{ username }}" pada HTML. Tombol "Add task" dibuat dengan membuat elemen <input> dengan type "submit" dan value "Add task" di dalam elemen form dengan action di set ke URL routing "create_task". Sementara itu, untuk tombol "Logout" dibuat dengan membuat elemen <input> dengan type "submit" dan value "Logout" di dalam elemen form dengan action di set ke URL routing "user_logout". Untuk mencetak tabel, digunakan elemen <table> dimana pada baris pertama (elemen <tr> pertama) ada "Title", "Description", "Date", "Status", "Change Status", dan "Delete Task" sebagai judul tiap kolom. Selanjutnya, dilakukan iterasi untuk tiap-tiap task yang dimiliki pengguna dengan for-each loop untuk mencetak data pada masing-masing object task. Pada dua kolom terakhir, ditambahkan button "Change" untuk mengubah status task dan "Delete" untuk menghapus task.
 
     6. Membuat halaman form untuk pembuatan task. Data yang perlu dimasukkan pengguna hanyalah judul task dan deskripsi task.
 
-
+    Membuat fungsi create_task() yang akan mengambil user menggunakan "request.user" dan data input dari form melalui "request.POST.get()" setelah dilakukan method HTTP request POST untuk mengirim data pada form ke server. Langkah berikutnya, object Task baru akan dibuat dengan parameter data yang sudah diambil dari form tadi dan satu parameter tanggal yang diambil dari "date.today". Kemudian, data tersebut disimpan ke database dengan method "save()". Terakhir, fungsi akan redirect ke halaman utama todolist.
 
     7. Membuat routing sehingga beberapa fungsi dapat diakses melalui URL berikut: http://localhost:8000/todolist/login (untuk login akun), http://localhost:8000/todolist/register (untuk registrasi akun), http://localhost:8000/todolist/create-task (untuk pembuatan task dengan form), dan http://localhost:8000/todolist/logout (untuk logout akun).
 
-
+    Pattern URL yang ditambahkan pada urls.py pada folder todolist adalah "" (string kosong) (merujuk ke akses halaman utama todolist yang berisi task pengguna dengan memanggil show_todolist), "register/" (merujuk ke akses halaman registrasi akun dengan memanggil register_account), "login/" (merujuk ke akses halaman login akun dengan memanggil user_login), "logout/" (merujuk ke implementasi logout akun dengan memanggil user_logout), "create-task/" (merujuk ke akses halaman pembuatan task dengan memanggil create_task), "change-status/" (merujuk ke implementasi pengubahan status task dengan memanggil change_status), "delete-task/" (merujuk ke implementasi penghapusan task dengan memanggil delete_task).
 
     8. Melakukan deployment ke Heroku terhadap aplikasi yang sudah kamu buat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
 
@@ -64,7 +64,13 @@ https://ark-tugas2pbp.herokuapp.com/todolist/
 
     9. Membuat dua akun pengguna dan tiga dummy data menggunakan model Task pada akun masing-masing di situs web Heroku.
 
-    Membuat initial data dengan format JSON di folder fixtures. File initial data yang dibuat ada dua, yaitu untuk data user dan data task. Pada file data user, ditambahkan dua object user dengan model "auth.user", primary key 1 dan 2, dan field berupa username dan password akun tersebut. Pada file data task, ditambahkan enam object task dengan model "todolist.task", primary key dari 1 sampai 6, dan field berupa user, date, title, dan description. Setelah itu menambahkan perintah loaddata kedua file json tersebut di bagian release pada Procfile.
+    Akun test:
+    1. cicakbinkadal, password: thisistheway
+    2. dekdepe, password: ihatetpsomuch
+
+    Dummy data task sudah ditambahkan ke akun masing-masing.
+
+    Catatan: isi folder fixtures tidak jadi dipakai.
 
 ## Credits
 

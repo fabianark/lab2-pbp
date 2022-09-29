@@ -17,27 +17,27 @@
             <th>Description</th>
             <th>Date</th>
             <th>Status</th>
-            <th>Change Status</th>
-            <th>Delete Task</th>
+            <th style="width: 100px">Change Status</th>
+            <th style="width: 100px">Delete Task</th>
         </tr>
         {% for task in todolist %}
         <tr>
-            <td>{{ task.title }}</td>
-            <td>{{ task.description }}</td>
-            <td>{{ task.date|date:"j F Y" }}</td>
+            <td style="padding: 5px">{{ task.title }}</td>
+            <td style="padding: 5px">{{ task.description }}</td>
+            <td style="padding: 5px">{{ task.date|date:"j F Y" }}</td>
             {% if task.is_finished %}
-                <td>Finished</td>
+                <td style="padding: 5px">Finished</td>
             {% else %}
-                <td>Not Finished</td>
+                <td style="padding: 5px">Not Finished</td>
             {% endif %}
-            <td>
+            <td style="padding: 5px; text-align: center">
                 <form method="POST" action="{% url 'todolist:change_status' %}">
                     {% csrf_token %}
                     <input type="number" name="pk" value="{{ task.pk }}" hidden>
                     <input type="submit" value="Change">
                 </form>
             </td>
-            <td>
+            <td style="padding: 5px; text-align: center">
                 <form method="POST" action="{% url 'todolist:delete_task' %}">
                     {% csrf_token %}
                     <input type="number" name="pk" value="{{ task.pk }}" hidden>
