@@ -42,7 +42,9 @@ https://ark-tugas2pbp.herokuapp.com/todolist/
 
     4. Mengimplementasikan form registrasi, login, dan logout agar pengguna dapat menggunakan todolist dengan baik.
 
-    
+    - Form registrasi dibuat dengan cara membuat fungsi register_account() menggunakan template form UserCreationForm(), lalu data input dikirim ke server dengan method HTTP request POST dan terakhir data disimpan ke database dengan method save() pada model Task. Kemudian setelah selesai, fungsi akan redirect ke halaman login.
+    - Implementasi login dibuat dengan cara membuat fungsi user_login(), lalu data input dikirim ke server dengan method HTTP request POST. Data username dan password diambil dengan "request.POST.get()". Setelah itu, akan dilakukan authentication user dengan mengecek apakah username dan password ada di database. Jika ada, maka fungsi "login(request, user)" akan dipanggil. Terakhir, fungsi akan redirect ke halaman utama todolist.
+    -Implementasi logout dibuat dengan cara membuat fungsi user_logout() yang akan memanggil fungsi "logout(request)", lalu redirect ke halaman login.
 
     5. Membuat halaman utama todolist yang memuat username pengguna, tombol Tambah Task Baru, tombol logout, serta tabel berisi tanggal pembuatan task, judul task, dan deskripsi task.
 

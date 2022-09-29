@@ -9,7 +9,7 @@
 
 <div class = "todolist">
 
-    <h1 style="text-align: center">Hey, {{ username }}! Here's your to-do list:</h1><br>
+    <h1 style="text-align: center">Hi, {{ username }}! Here's your to-do list:</h1><br>
 
     <table>
         <tr>
@@ -49,6 +49,16 @@
         </tr>
         {% endfor %}
     </table>
+
+    <br>
+    <form action="{% url 'todolist:create_task' %}">
+        {% csrf_token %}
+        <input type="submit" value="Add task">
+    </form>
+    <br>
+    <form action="{% url 'todolist:user_logout' %}">
+        <input type="submit" value="Logout">      
+    </form>
 
     {% if messages %}
         <br>
