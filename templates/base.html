@@ -26,9 +26,9 @@
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page">{{ username }}</a>
 				</li>
-				<li class="d-flex">
+				<form class="d-flex">
 					<button><a href="{% url 'todolist:user_logout' %}">Logout</a></button>
-				</li>
+				</form>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					Menu
@@ -42,9 +42,6 @@
 					</ul>
 				</li>
 				</ul>
-				<form class="d-flex">
-					<button><a href="{% url 'todolist:user_logout' %}">Logout</a></button>
-				</form>
 			</div>
 		</div>
 	</nav>
