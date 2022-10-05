@@ -11,44 +11,51 @@
 
     <h1 style="text-align: center">Hi, {{ username }}! Here's your to-do list:</h1><br>
 
-    <table>
+    <table style="width: 100%">
         <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th style="width: 100px">Change Status</th>
-            <th style="width: 100px">Delete Task</th>
+            <th style="text-align: center; column-width:120px">Title</th>
+            <th style="text-align: center; column-width:120px">Description</th>
+            <th style="text-align: center; column-width:120px">Date</th>
+            <th style="text-align: center; column-width:120px">Status</th>
+            <th style="text-align: center; column-width:120px">Change Status</th>
+            <th style="text-align: center; column-width:120px">Delete Task</th>
         </tr>
-        {% for task in todolist %}
-        <tr>
-            <td style="padding: 5px">{{ task.title }}</td>
-            <td style="padding: 5px">{{ task.description }}</td>
-            <td style="padding: 5px">{{ task.date|date:"j F Y" }}</td>
-            {% if task.is_finished %}
-                <td style="padding: 5px">Finished</td>
-            {% else %}
-                <td style="padding: 5px">Not Finished</td>
-            {% endif %}
-            <td style="padding: 5px; text-align: center">
-                <form method="POST" action="{% url 'todolist:change_status' %}">
-                    {% csrf_token %}
-                    <input type="number" name="pk" value="{{ task.pk }}" hidden>
-                    <input type="submit" value="Change">
-                </form>
-            </td>
-            <td style="padding: 5px; text-align: center">
-                <form method="POST" action="{% url 'todolist:delete_task' %}">
-                    {% csrf_token %}
-                    <input type="number" name="pk" value="{{ task.pk }}" hidden>
-                    <input type="submit" value="Delete">
-                </form>
-            </td>
-        </tr>
-        <tr>
-        </tr>
-        {% endfor %}
     </table>
+    <br>
+    {% for task in todolist %}
+    <div class="card" data-toggle="popover" title="{{ task.title }}" data-content="Created at {{ task.date|date:"j F Y" }}">
+        <div class="card-body bg-light">
+            <table style="width: 100%">
+                <tr>
+                    <td style="text-align:center; column-width:120px">{{ task.title }}</td>
+                    <td style="text-align:center; column-width:120px">{{ task.description }}</td>
+                    <td style="text-align:center; column-width:120px">{{ task.date|date:"j F Y" }}</td>
+                    {% if task.is_finished %}
+                        <td style="text-align:center; column-width:120px">Finished</td>
+                    {% else %}
+                        <td style="text-align:center; column-width:120px">Not Finished</td>
+                    {% endif %}
+                    <td style="text-align:center; column-width:120px">
+                        <form method="POST" action="{% url 'todolist:change_status' %}">
+                            {% csrf_token %}
+                            <input type="number" name="pk" value="{{ task.pk }}" hidden>
+                            <input type="submit" value="Change">
+                        </form>
+                    </td>
+                    <td style="text-align:center; column-width:120px">
+                        <form method="POST" action="{% url 'todolist:delete_task' %}">
+                            {% csrf_token %}
+                            <input type="number" name="pk" value="{{ task.pk }}" hidden>
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <tr>
+    </tr>
+    {% endfor %}
 
     <br>
     <form action="{% url 'todolist:create_task' %}">
