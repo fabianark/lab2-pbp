@@ -5,7 +5,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="base.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   {% block meta %}
   {% endblock meta %}
@@ -16,7 +15,6 @@
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">
 				ARK™
-			<img src="static\img\Logo Fasilkom UI.jpg" class="d-inline-block align-text-top" />
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -27,7 +25,7 @@
 					<a class="nav-link active" aria-current="page">{{ username }}</a>
 				</li>
 				<form class="d-flex">
-					<button><a href="{% url 'todolist:user_logout' %}">Logout</a></button>
+					<a class="btn btn-danger" href="{% url 'todolist:user_logout' %} " role="button">Logout</a>
 				</form>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

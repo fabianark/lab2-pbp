@@ -5,38 +5,38 @@
 {% endblock meta %}
 
 {% block content %}
-<h1 style="color: darkblue; text-align: center; font-weight: bold; font-family: Tahoma">User Login</h1>
+<br>
+<h1 style="color: #0d6efd; text-align: center; font-weight: bold; font-family: Tahoma">User Login</h1>
+<br>
 
-<div class = "login">
-
-    <h1>Login</h1><br>
+<div class = "login" style="text-align:center">
 
     <form method="POST">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-            </tr>
- 
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
+        <div class="card border-dark" style="margin:auto; width:50%; padding:10px">
+            <h1>Login</h1><br>
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                </tr>
+                        
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                </tr>
+    
+                <tr>
+                </tr>
+            </table>
+            <br>
+            <button type="submit" class="btn btn-primary mx-auto" style="width:15%;">Login</button>
+        </div>
     </form>
 
     {% if messages %}
         <br>
-        <ul>
+        <ul style="margin:auto; width:30%">
             {% for message in messages %}
                 <li>{{ message }}</li>
             {% endfor %}
@@ -44,7 +44,16 @@
     {% endif %}     
     
     <br>
-    Don't have an account yet? <a href="{% url 'todolist:register_account' %}">Create a new account</a>
+    <div class="card text-center mx-auto" style="width:30%;">
+        <div class="card-body">
+            <h5 class="card-title">Don't have an account yet?<br>
+                <div class="card-text">
+                    <a href="{% url 'todolist:register_account' %}">Create Account</a>
+                </div>
+            </h5>
+        </div>
+    </div>
+    <br>
 
 </div>
 

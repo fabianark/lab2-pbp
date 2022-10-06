@@ -1,4 +1,4 @@
-# Tugas 3 PBP
+# Tugas 4 PBP
 
 Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
 
@@ -72,6 +72,64 @@ https://ark-tugas2pbp.herokuapp.com/todolist/
 
     Catatan: isi folder fixtures tidak jadi dipakai.
 
+# Tugas 5 PBP
+
+Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
+
+## Jawaban Pertanyaan
+
+1. Apa perbedaan dari Inline, Internal, dan External CSS? Apa saja kelebihan dan kekurangan dari masing-masing style?
+
+   Inline CSS dilakukan dengan menambahkan atribut <style> pada bagian <body> file HTML menggunakan aturan sintaks CSS dan properti CSS lainnya.
+
+   Kelebihan: mudah untuk diimplementasi dan sederhana
+   Kekurangan: biasanya digunakan hanya untuk mengatur satu elemen saja sebab harus menambahkan inline CSS secara berulang-ulang sehingga menjadi tidak rapih dan redundant
+
+   Internal CSS dilakukan dengan menambahkan kode CSS di dalam <head> dan digunakan untuk mengatur keseluruhan elemen dalam suatu halaman agar halaman tersebut dapat diatur secara khusus dibanding halaman lainnya.
+
+   Kelebihan: bisa memudahkan dalam mengatur tampilan satu halaman khusus sebab setiap tag yang diatur akan selalu mengikuti formatnya yang sudah didefinisikan
+   Kekurangan: tidak bisa digunakan untuk mengatur lebih dari satu halaman
+
+   External CSS dilakukan dengan membuat kode di file CSS terpisah dari file HTML yang akan diatur. File HTML yang akan diatur perlu ditambahkan link menuju file CSS yang sudah dibuat.
+
+   Kelebihan: sangat fleksibel karena bisa digunakan untuk mengatur lebih dari satu file HTML secara bersamaan karena tiap file HTML dapat diberikan link menuju file CSS yang sama
+   Kekurangan: kode terlihat lebih kompleks
+
+2.  Jelaskan tag HTML5 yang kamu ketahui.
+
+   <head> = digunakan untuk menampilkan header dari halaman HTML
+   <body> = digunakan untuk menampilkan isi konten dari halaman HTML
+   <p> = teks dalam bentuk paragraf
+   <a> = anchor text, biasanya digunakan untuk menambahkan link
+   <form> = form yang digunakan user untuk melakukan input data
+   <button> = tombol yang dapat di-klik dan digunakan untuk implementasi fungsi
+   <table> = tabel berisi sel-sel yang mengandung data
+   <img> = untuk menambahkan gambar dengan melakukan link ke URL atau ke suatu file di direktori
+
+3.  Jelaskan tipe-tipe CSS selector yang kamu ketahui.
+
+    1. Element selector = untuk mengatur format tampilan pada elemen tertentu
+    2. ID selector = untuk mengatur format tampilan pada elemen yang diberikan ID tertentu, selector diberi tambahan "#" di awal namanya
+    3. Class selector = untuk mengatur format tampilan pada class tertentu, selector diberi tambahan "." di awal namanya
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+
+    1. Kustomisasi templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut: kustomisasi template untuk halaman login, register, dan create-task semenarik mungkin dan kustomisasi halaman utama todo list menggunakan cards (satu card mengandung satu task).
+
+    Pertama-tama saya menambahkan pada base.html link file CSS yang ada di halaman introduction (https://getbootstrap.com/docs/5.2/getting-started/introduction/) dan menambahkan script JavaScript utama untuk Bootstrap dan Popper. Selain itu, saya juga menambahkan script pada bagian <body> di base.html agar bisa menjalankan implementasi komponen popover. Tipe implementasi CSS yang dilakukan ini adalah external CSS karena pada file HTMl ditambahkan link menuju file CSS template dari Bootstrap.
+
+    Saya menggunakan template dari Bootstrap dengan menggunakan komponen-komponen yang ada di halaman dokumentasi Bootstrap berikut:
+    Button = https://getbootstrap.com/docs/5.2/components/buttons/
+    Card = https://getbootstrap.com/docs/5.2/components/card/
+    Dropdown = https://getbootstrap.com/docs/5.2/components/dropdowns/
+    Navigation Bar = https://getbootstrap.com/docs/5.2/components/navbar/
+    Popover = https://getbootstrap.com/docs/5.2/components/popovers/
+
+    2. Membuat keempat halaman yang dikustomisasi menjadi responsive.
+
+    Framework Bootstrap sudah otomatis membuat semua halaman HTML yang diberikan link ke file CSS pada website Bootstrap menjadi responsif
+
 ## Credits
 
 TUGAS 4 PBP by ARK
+TUGAS 5 PBP by ARK

@@ -5,13 +5,14 @@
 {% endblock meta %}
 
 {% block content %}
-<h1 style="color: darkblue; text-align: center; font-weight: bold; font-family: Tahoma">To-Do List</h1>
+<br>
+<h1 style="color: #0d6efd; text-align: center; font-weight: bold; font-family: Tahoma">To-Do List</h1>
 
 <div class = "todolist">
 
     <h1 style="text-align: center">Hi, {{ username }}! Here's your to-do list:</h1><br>
 
-    <table style="width: 100%">
+    <table style="margin:auto; width: 88%">
         <tr>
             <th style="text-align: center; column-width:120px">Title</th>
             <th style="text-align: center; column-width:120px">Description</th>
@@ -23,7 +24,7 @@
     </table>
     <br>
     {% for task in todolist %}
-    <div class="card" data-toggle="popover" title="{{ task.title }}" data-content="Created at {{ task.date|date:"j F Y" }}">
+    <div class="card border-dark" style="margin:auto; width:90%" data-toggle="popover" title="{{ task.title }}" data-content="Created at {{ task.date|date:'j F Y' }}">
         <div class="card-body bg-light">
             <table style="width: 100%">
                 <tr>
@@ -39,14 +40,14 @@
                         <form method="POST" action="{% url 'todolist:change_status' %}">
                             {% csrf_token %}
                             <input type="number" name="pk" value="{{ task.pk }}" hidden>
-                            <input type="submit" value="Change">
+                            <button type="submit" class="btn btn-primary">Change</button>
                         </form>
                     </td>
                     <td style="text-align:center; column-width:120px">
                         <form method="POST" action="{% url 'todolist:delete_task' %}">
                             {% csrf_token %}
                             <input type="number" name="pk" value="{{ task.pk }}" hidden>
-                            <input type="submit" value="Delete">
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -56,29 +57,26 @@
     <tr>
     </tr>
     {% endfor %}
-
     <br>
-    <form action="{% url 'todolist:create_task' %}">
-        {% csrf_token %}
-        <input type="submit" value="Add task">
-    </form>
+    <div class="card text-center mx-auto" style="width: 30%;">
+        <div class="card-body">
+            <h5 class="card-title">Don't have an account yet?<br>
+                <a href="{% url 'todolist:register_account' %}">Create Account</a>
+            </h5>
+            <br>
+            {% if messages %}
+                <div class="card-text">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </div>
+                <br>
+            {% endif %}
+            <a href="{% url 'todolist:create_task' %}" class="btn btn-primary">Add task</a>
+            <a href="{% url 'todolist:user_logout' %}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
     <br>
-    <form action="{% url 'todolist:user_logout' %}">
-        <input type="submit" value="Logout">      
-    </form>
-
-    {% if messages %}
-        <br>
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-    
-    <br>
-    Don't have an account yet? <a href="{% url 'todolist:register_account' %}">Create Account</a>
-
 </div>
 
 {% endblock content %}
