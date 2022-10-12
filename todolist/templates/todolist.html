@@ -12,52 +12,8 @@
 
     <h1 style="text-align: center">Hi, {{ username }}! Here's your to-do list:</h1><br>
 
-    <table style="margin:auto; width: 88%">
-        <tr>
-            <th style="text-align: center; column-width:120px">Title</th>
-            <th style="text-align: center; column-width:120px">Description</th>
-            <th style="text-align: center; column-width:120px">Date</th>
-            <th style="text-align: center; column-width:120px">Status</th>
-            <th style="text-align: center; column-width:120px">Change Status</th>
-            <th style="text-align: center; column-width:120px">Delete Task</th>
-        </tr>
-    </table>
-    <br>
-    {% for task in todolist %}
-    <div class="card border-dark" style="margin:auto; width:90%" data-toggle="popover" title="{{ task.title }}" data-content="Created at {{ task.date|date:'j F Y' }}">
-        <div class="card-body bg-light">
-            <table style="width: 100%">
-                <tr>
-                    <td style="text-align:center; column-width:120px">{{ task.title }}</td>
-                    <td style="text-align:center; column-width:120px">{{ task.description }}</td>
-                    <td style="text-align:center; column-width:120px">{{ task.date|date:"j F Y" }}</td>
-                    {% if task.is_finished %}
-                        <td style="text-align:center; column-width:120px">Finished</td>
-                    {% else %}
-                        <td style="text-align:center; column-width:120px">Not Finished</td>
-                    {% endif %}
-                    <td style="text-align:center; column-width:120px">
-                        <form method="POST" action="{% url 'todolist:change_status' %}">
-                            {% csrf_token %}
-                            <input type="number" name="pk" value="{{ task.pk }}" hidden>
-                            <button type="submit" class="btn btn-primary">Change</button>
-                        </form>
-                    </td>
-                    <td style="text-align:center; column-width:120px">
-                        <form method="POST" action="{% url 'todolist:delete_task' %}">
-                            {% csrf_token %}
-                            <input type="number" name="pk" value="{{ task.pk }}" hidden>
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <tr>
-    </tr>
-    {% endfor %}
-    <br>
+    <div id="ajax-todolist"></div>
+
     <div class="card text-center mx-auto" style="width: 30%;">
         <div class="card-body">
             <h5 class="card-title">Don't have an account yet?<br>
@@ -72,11 +28,197 @@
                 </div>
                 <br>
             {% endif %}
-            <a href="{% url 'todolist:create_task' %}" class="btn btn-primary">Add task</a>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add task</button>
             <a href="{% url 'todolist:user_logout' %}" class="btn btn-danger">Logout</a>
         </div>
     </div>
     <br>
 </div>
 
+<div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addTaskModalLabel">Add Task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" id="add-task">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="card border-dark" style="margin:auto; width:100%; padding:10px">
+                        <h5>Add your task here:</h5>
+                        <table>
+                            <tr>
+                                <td>Task title: </td>
+                                <td><input type="text" name="title" placeholder="Title" class="form-control"></td>
+                            </tr>
+                                    
+                            <tr>
+                                <td>Description: </td>
+                                <td>
+                                    <textarea name="description" placeholder="Task description" class="form-control"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="btn-add">Add task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal2">
+    Launch demo modal
+  </button>
+  
+  <div class="modal fade" id="addTaskModal2" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addTaskModal2Label">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- <form method="POST">
+    {% csrf_token %}
+    <div class="card border-dark" style="margin:auto; width:50%; padding:10px">
+        <h1>Add your tasks here:</h1><br>
+        <table>
+            <tr>
+                <td>Task title: </td>
+                <td><input type="text" name="title" placeholder="Title" class="form-control"></td>
+            </tr>
+                    
+            <tr>
+                <td>Description: </td>
+                <td>
+                    <textarea name="description" placeholder="Task description" class="form-control"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+            </tr>
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary mx-auto" style="width:15%;">Add task</button>
+    </div>
+</form> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function renderTodolist() {
+        $.get("/todolist/json", function(data) {
+            console.log(data);
+            var todolist = ""
+            for (i = 0; i < data.length; i++) {
+                todolist += `
+                <div class="card border-dark" style="margin:auto; width:90%" data-toggle="popover" title="${data[i].fields.title}" data-content="Created at ${data[i].fields.date}">
+                    <h4 class="card-header">${data[i].fields.title}</h4>
+                    <div class="card-body bg-light" id="ajax-todolist">
+                        <h5 class="card-title">${data[i].fields.description}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Created at ${data[i].fields.date}</h6>
+                        <p class="card-text">${data[i].fields.is_finished ? "Status: Finished":"Status: Not Finished"}</p>
+                        <table>
+                            <td>
+                                <form method="POST" action="{% url 'todolist:change_status' %}" style="margin: 0; padding: 0">
+                                    {% csrf_token %}
+                                    <input type="number" name="pk" value="${data[i].pk}" hidden>
+                                    <button type="submit" class="btn btn-primary">Change status</button>
+                                </form>
+                            </td>
+                            <td style="padding-left:10px">
+                                <form method="POST" id="delete-task" action="{% url 'todolist:delete_task' %}" style="margin: 0; padding: 0">
+                                    {% csrf_token %}
+                                    <input type="number" name="pk" value="${data[i].pk}" hidden>
+                                    <button type="submit" class="btn btn-danger">Delete task</button>
+                                </form>
+                            </td>
+                        </table>
+                    </div>
+                </div>
+                <br>
+                `
+            }
+            // for (i = 0; i < data.length; i++) {
+            //     todolist += `<div class='card border-dark' style='margin:auto; width:90%'' data-toggle='popover' title='${data[i].fields.title}' data-content='Created at ${data[i].fields.date}'>`
+            //     todolist += `<h4 class='card-header'>${data[i].fields.title}</h4>`
+            //     todolist += `<div class='card-body bg-light' id='ajax-todolist'>`
+            //     todolist += `<h5 class='card-title'>${data[i].fields.description}</h5><h6 class='card-subtitle mb-2 text-muted'>Created at ${data[i].fields.date}</h6>`
+            //     if (data[i].fields.is_finished) {
+            //         todolist += `<p class='card-text'>Status: Finished</p>`
+            //     }
+            //     else {
+            //         todolist += `<p class='card-text'>Status: Not Finished</p>`
+            //     }
+            //     todolist += `<table>`
+            //     todolist += `<td>`
+            //     todolist += `<form method='POST' action='{% url 'todolist:change_status' %}' style='margin: 0; padding: 0'>{% csrf_token %}`
+            //     todolist += `<input type='number' name='pk' value='${data[i].pk}' hidden>`
+            //     todolist += `<button type='submit' class='btn btn-primary'>Change status</button>`
+            //     todolist += `</form>`
+            //     todolist += `</td>`
+            //     todolist += `<td style='padding-left:10px'>`
+            //     todolist += `<form method='POST' id="delete-task" action='{% url 'todolist:delete_task' %}' style='margin: 0; padding: 0'>{% csrf_token %}`
+            //     todolist += `<input type='number' name='pk' value='${data[i].pk}' hidden>`
+            //     todolist += `<button type='submit' class='btn btn-danger'>Delete task</button>`
+            //     todolist += `</form>`
+            //     todolist += `</td>`
+            //     todolist += `</table>`
+            //     todolist += `</div></div><br>`
+            // }
+            document.getElementById("ajax-todolist").innerHTML = todolist
+        });
+    }
+    function closeModal() {
+        $('#addTaskModal').modal('hide');
+    }
+    $(document).ready(function(){
+        renderTodolist();
+        $('#add-task').submit(function() {
+            // create an AJAX call
+            $.ajax({
+                data: $(this).serialize(), // get the form data
+                method: 'POST', // GET or POST
+                url: "{% url 'todolist:add_task_ajax' %}",
+                // on success
+                success: function(response) {
+                    alert(response);
+                    closeModal();
+                    renderTodolist();
+                }
+            });
+            return false;
+        });
+        $('#delete-task').submit(function() {
+            // create an AJAX call
+            var id = $(this).find('input[name="pk"]').val()
+            $.ajax({
+                data: $(this).serialize(), // get the form data
+                method: 'POST', // GET or POST
+                url: `/todolist/delete/${id}`,
+                // on success
+                success: function(response) {
+                    alert(response);
+                    renderTodolist();
+                }
+            });
+            return false;
+        });
+    });
+</script>
 {% endblock content %}

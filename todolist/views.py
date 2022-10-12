@@ -1,5 +1,6 @@
 from datetime import date
 from random import randint
+from telnetlib import STATUS
 from urllib import response
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -11,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import HttpResponse
+from django.core import serializers
 
 # Create your views here.
 
@@ -88,3 +91,29 @@ def delete_task(request):
 
     messages.success(request, 'A task has been deleted!')
     return redirect('todolist:show_todolist')
+
+def show_json(request):
+    data = Task.objects.all()
+
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+@login_required(login_url='/todolist/login/')
+def add_task_ajax(request):
+    if request.method == "POST":
+        user = request.user
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        task = Task(user=user, date=date.today(), title=title, description=description)
+        task.save()
+
+        return HttpResponse("Task: " + title + " have been added")
+
+    return HttpResponse(status=400)
+
+@login_required(login_url='/todolist/login/')
+def delete_task_ajax(request, id):
+    task = Task.objects.get(pk=id)
+    title = task.title
+    task.delete()
+
+    return HttpResponse("Task: " + title + " have been deleted")
