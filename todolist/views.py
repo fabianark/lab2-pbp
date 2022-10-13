@@ -93,12 +93,9 @@ def delete_task(request):
     messages.success(request, 'A task has been deleted!')
     return redirect('todolist:show_todolist')
 
+@login_required(login_url='/todolist/login/')
 def show_json(request):
-    user = request.user
-    if not isinstance(user, AnonymousUser):
-        data = Task.objects.filter(user=user)
-    else:
-        data = Task.objects.all()
+    data = Task.objects.filter(user=request.user)
 
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
