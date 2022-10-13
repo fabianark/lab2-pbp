@@ -95,7 +95,7 @@ def delete_task(request):
 
 @login_required(login_url='/todolist/login/')
 def show_json(request):
-    data = Task.objects.filter(user=request.user)
+    data = Task.objects.filter(user=request.user.id)
 
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
