@@ -14,6 +14,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import HttpResponse
 from django.core import serializers
+from django.contrib.auth.models import AnonymousUser
 
 # Create your views here.
 
@@ -93,7 +94,11 @@ def delete_task(request):
     return redirect('todolist:show_todolist')
 
 def show_json(request):
-    data = Task.objects.all()
+    user = request.user
+    if not isinstance(user, AnonymousUser):
+        data = Task.objects.filter(user=user)
+    else:
+        data = Task.objects.all()
 
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
